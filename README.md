@@ -1,2 +1,2 @@
-# biligame-wiki-plus-plus
-Bwiki++
+# Bwiki++ | B站百科美化
+一个bwiki美化样式，但仅为符合自己需求所写

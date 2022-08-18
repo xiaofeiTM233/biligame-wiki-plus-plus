@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Bwiki++
 @namespace      bwiki-plus-plus
-@version        1.0+20220812
+@version        1.0+20220818
 @description    Bwiki++
 @author         飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
 @homepageURL    https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
@@ -10,10 +10,8 @@
 ==/UserStyle== */
 
  @-moz-document url-prefix("https://wiki.biligame.com") {
-    /*图片修改*/
-    img {
-        image-rendering: pixelated!important;
-    }
+    /*全局修改*/
+
     /*顶栏修改*/
     .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2 {
     background: transparent;
@@ -52,6 +50,13 @@
     }
     /*看板娘*/
     .animechara,
+    /*通知*/
+    #notice-modal-wrap.oo-ui-popupWidget,
+    #pt-notifications-alert a,
+    /*关于本站*/
+    .about-site,
+    /*全站通知*/
+    #siteNotice,
     /*b站顶栏*/
     .bili-game-header-nav-bar,.bui-sns-info.hidden-xs{
         display: none!important
@@ -59,13 +64,13 @@
 }
 
  @-moz-document url-prefix("https://wiki.biligame.com/gt") {
-    /*坎公骑冠剑wiki*/
+    /*特别修改~~坎公骑冠剑wiki*/
     
     /*去除飞行小公主*/
     .FLY,.FLY.rX,.FLY.rY,.FLY.rZ{
         display: none!important
     } 
-    /*顶栏修改*/
+    /*白色透明顶栏*/
     .wiki-header .wiki-nav {
     border-top: 1px solid #000;
     margin-left: auto;
@@ -80,9 +85,19 @@
     }
 }
 @-moz-document url-prefix("https://wiki.biligame.com/arknights") {
-    /*明日方舟wiki*/
+    /*特别修改~~明日方舟wiki*/
+    
+    /*明日方舟bwiki这破东西谁都救不了*/
+    
     /*顶部白底变透明*/
     .wiki-header {
     background: #fff0;
     }
+}
+
+ @-moz-document url-prefix("https://wiki.biligame.com"), url-prefix("https://i0.hdslb.com/bfs/article") {
+    /*图片修改*/
+    img {
+        image-rendering: pixelated!important;
+     }
 }

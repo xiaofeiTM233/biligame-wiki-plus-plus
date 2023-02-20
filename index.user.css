@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Bwiki++
 @namespace      bwiki-plus-plus
-@version        1.4+20221225
+@version        1.5+20230220
 @description    Bwiki++
 @author         飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
 @homepageURL    https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
@@ -49,6 +49,47 @@ url-prefix("https://searchwiki.biligame.com") {
         border-radius: 0;
         background: #fff0;
     }
+    /*显示页面分类*/
+    .catlinks {
+        border-radius: 14px;
+        display: block!important;
+        border: 1px solid #0077ff;
+    }
+    /*审核提示修改*/
+    .usermessage {
+        border-radius: 14px;
+        border: 1px solid #fc2;
+    }
+    .usermessage a {
+        margin-left: 0.5em;
+        color: #36b!important;
+    }
+    /*评论框修改*/
+    .comment-body textarea,
+    .comment-submit {
+        border-radius: 14px;
+        background: #f8f9fa;
+    }
+    .comment-toolbar {
+        background: none;
+    }
+    .comment-submit {
+        background: #00a1d6;
+        color: #fff;
+        text-shadow: none;
+        font-weight: normal;
+        font-size: 114.514%
+    }
+    .comments-title {
+        font-size: 114.514%
+    }
+    /*最近更改页顶首增加高度*/
+    .page-特殊_最近更改 .mw-rcfilters-ui-changesListWrapperWidget {
+        margin-top: 2em;
+    }
+    #toc {
+        width: auto;
+    }
     /*看板娘*/
     .animechara,
     /*通知*/
@@ -74,7 +115,12 @@ url-prefix("https://searchwiki.biligame.com") {
     /*隐藏目录按钮*/
     #toc::after,
     /*移除可视化编辑按钮*/
-    #ca-ve-edit {
+    #ca-ve-edit,
+    /*右上角帮助*/
+    .mw-indicators,
+    /*最近更改筛选器及缩写列表*/
+    .client-js .mw-rcfilters-head,
+    .mw-changeslist-legend {
         display: none!important
     }
 }
@@ -89,32 +135,6 @@ url-prefix("https://searchwiki.biligame.com/gt/") {
     .FLY.rZ {
         display: none!important
     }
-    /*显示页面分类*/
-    .catlinks {
-        border-radius: 14px;
-        display: block!important;
-        border: 1px solid #0077ff;
-    }
-    /*评论框修改*/
-    .comment-body textarea,
-    .comment-submit {
-        border-radius: 14px;
-        background: #f8f9fa;
-    }
-    .comment-toolbar {
-        background: none;
-    }
-    .comment-submit {
-        background: #00a1d6;
-        color: #fff;
-        text-shadow: none;
-        font-weight: normal;
-        font-size: 114.514%
-    }
-    .comments-title {
-        font-size: 114.514%
-    }
-
     /*白色透明顶栏*/
     .wiki-header .wiki-nav {
         border-top: 1px solid #000;
@@ -130,6 +150,10 @@ url-prefix("https://searchwiki.biligame.com/gt/") {
     .menu-wrap .wiki-menu-li-1 > a,
     .vectorMenu h3 span {
         color: rgba(0, 0, 0, .85);
+    }
+    /*面包屑模板显示页面时间*/
+    .bread-time {
+        display: initial!important;
     }
 }
 @-moz-document url-prefix("https://wiki.biligame.com/arknights/"),

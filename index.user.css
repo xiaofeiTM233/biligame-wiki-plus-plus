@@ -1,176 +1,201 @@
 /* ==UserStyle==
 @name         Bwiki++
 @namespace      bwiki-plus-plus
-@version        1.5+20230220
+@version        1.7+20230312
 @description    Bwiki++
 @author         飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
 @homepageURL    https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
 @supportURL     https://club.afox.tk
 @updateURL https://userstyles.world/api/style/6075.user.css
 @license        MIT
+
+@advanced dropdown EDIT_FONTS "编辑器字体" {
+	MONOSPACE "【默认】monospace" <<<EOT
+		pre.CodeMirror-line,
+		.wikiEditor-ui .ace_editor {
+			font-family: monospace,monospace!important;
+			font-size: 13px!important;
+		}
+	EOT;
+
+	CONSOLAS "【舒适】consolas" <<<EOT
+		pre.CodeMirror-line,
+		.wikiEditor-ui .ace_editor {
+			font-family: consolas!important;
+			font-size: 14px!important;
+		}
+	EOT;
+}
 ==/UserStyle== */
 @-moz-document url-prefix("https://wiki.biligame.com"),
 url-prefix("https://searchwiki.biligame.com") {
-    /*全局修改*/
-    /*顶栏修改*/
-    .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2 {
-        background: transparent;
-        text-align: left;
-        text-indent: 12px;
-        height: 36px;
-        line-height: 36px;
-    }
-    .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active a,
-    .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2:hover a,
-    .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
-        color: #ffffff;
-        text-decoration-line: none;
-    }
-    .vectorMenu li a:hover,
-    .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active,
-    .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
-        background-color: rgb(25, 95, 128);
-    }
-    .vectorMenu .menu,
-    .menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2,
-    .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3,
-    .menu-wrap .wiki-menu-li-1.title_active,
-    .wiki-hoverbox .wiki-hoverbox-inner::-webkit-scrollbar-track {
-        background-color: #111219d9;
-    }
-    .vectorMenu li a,
-    .vectorMenu li a:hover,
-    .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
-        color: rgb(255 255 255 / 85%);
-        height: 36px;
-        line-height: 36px;
-    }
-    .menu-wrap .wiki-menu-li-1 {
-        border-radius: 0;
-        background: #fff0;
-    }
-    /*显示页面分类*/
-    .catlinks {
-        border-radius: 14px;
-        display: block!important;
-        border: 1px solid #0077ff;
-    }
-    /*审核提示修改*/
-    .usermessage {
-        border-radius: 14px;
-        border: 1px solid #fc2;
-    }
-    .usermessage a {
-        margin-left: 0.5em;
-        color: #36b!important;
-    }
-    /*评论框修改*/
-    .comment-body textarea,
-    .comment-submit {
-        border-radius: 14px;
-        background: #f8f9fa;
-    }
-    .comment-toolbar {
-        background: none;
-    }
-    .comment-submit {
-        background: #00a1d6;
-        color: #fff;
-        text-shadow: none;
-        font-weight: normal;
-        font-size: 114.514%
-    }
-    .comments-title {
-        font-size: 114.514%
-    }
-    /*最近更改页顶首增加高度*/
-    .page-特殊_最近更改 .mw-rcfilters-ui-changesListWrapperWidget {
-        margin-top: 2em;
-    }
-    #toc {
-        width: auto;
-    }
-    /*看板娘*/
-    .animechara,
-    /*通知*/
-    #notice-modal-wrap.oo-ui-popupWidget,
-    #pt-notifications-alert a,
-    /*关于本站*/
-    .about-site,
-    /*全站通知*/
-    #siteNotice,
-    /*隐藏首页标题*/
-    .page-首页 #firstHeading,
-    .page-首页 .firstHeading,
-    .page-首页 #biliContributors,
-    .page-首页 .biliContributors,
-    .page-首页 #firstHeadingTools,
-    .page-首页 .firstHeadingTools,
-    /*右下角工具栏*/
-    #menur,
-    /*b站顶底栏*/
-    .bili-game-header-nav-bar,
-    .bui-sns-info.hidden-xs,
-    .footer-public,
-    /*隐藏目录按钮*/
-    #toc::after,
-    /*移除可视化编辑按钮*/
-    #ca-ve-edit,
-    /*右上角帮助*/
-    .mw-indicators,
-    /*最近更改筛选器及缩写列表*/
-    .client-js .mw-rcfilters-head,
-    .mw-changeslist-legend {
-        display: none!important
-    }
+	/*全局修改*/
+	/*顶栏修改*/
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2 {
+		background: transparent;
+		text-align: left;
+		text-indent: 12px;
+		height: 36px;
+		line-height: 36px;
+	}
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active a,
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2:hover a,
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
+		color: #ffffff;
+		text-decoration-line: none;
+	}
+	.vectorMenu li a:hover,
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active,
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
+		background-color: rgb(25, 95, 128);
+	}
+	.vectorMenu .menu,
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2,
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3,
+	.menu-wrap .wiki-menu-li-1.title_active,
+	.wiki-hoverbox .wiki-hoverbox-inner::-webkit-scrollbar-track {
+		background-color: #111219d9;
+	}
+	.vectorMenu li a,
+	.vectorMenu li a:hover,
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
+		color: rgb(255 255 255 / 85%);
+		height: 36px;
+		line-height: 36px;
+	}
+	.menu-wrap .wiki-menu-li-1 {
+		border-radius: 0;
+		background: #fff0;
+	}
+	/*显示页面分类*/
+	.catlinks {
+		border-radius: 14px;
+		display: block!important;
+		border: 1px solid #0077ff;
+	}
+	/*审核提示修改*/
+	.usermessage {
+		border-radius: 14px;
+		border: 1px solid #fc2;
+	}
+	.usermessage a {
+		margin-left: 0.5em;
+		color: #36b!important;
+	}
+	/*评论框修改*/
+	.comment-body textarea,
+	.comment-submit {
+		border-radius: 14px;
+		background: #f8f9fa;
+	}
+	.comment-toolbar {
+		background: none;
+	}
+	.comment-submit {
+		background: #00a1d6;
+		color: #fff;
+		text-shadow: none;
+		font-weight: normal;
+		font-size: 114.514%
+	}
+	.comments-title {
+		font-size: 114.514%
+	}
+	/*最近更改页顶首增加高度*/
+	.page-特殊_最近更改 .mw-rcfilters-ui-changesListWrapperWidget {
+		margin-top: 2em;
+	}
+	#toc {
+		width: auto;
+	}
+	/*看板娘*/
+	.animechara,
+	/*通知*/
+	#notice-modal-wrap.oo-ui-popupWidget,
+	#pt-notifications-alert a,
+	/*关于本站*/
+	.about-site,
+	/*全站通知*/
+	#siteNotice,
+	/*隐藏首页标题*/
+	.page-首页 #firstHeading,
+	.page-首页 .firstHeading,
+	.page-首页 #biliContributors,
+	.page-首页 .biliContributors,
+	.page-首页 #firstHeadingTools,
+	.page-首页 .firstHeadingTools,
+	/*右下角工具栏*/
+	#menur,
+	/*b站顶底栏*/
+	.bili-game-header-nav-bar,
+	.bui-sns-info.hidden-xs,
+	.footer-public,
+	/*隐藏目录按钮*/
+	#toc::after,
+	/*SmartClick*/
+	#alert-area,
+	/*移除可视化编辑按钮*/
+	#ca-ve-edit,
+	/*右上角帮助*/
+	.mw-indicators,
+	/*最近更改筛选器及缩写列表*/
+	.client-js .mw-rcfilters-head,
+	.mw-changeslist-legend {
+		display: none!important
+	}
+	.client-js .sortable:not(.jquery-tablesorter) > * > tr:first-child > th:not(.unsortable),/*隐藏表格不可排序时的排序按钮*/
+	.jquery-tablesorter th.headerSort/*隐藏表格未排序时的排序按钮*/{
+		background-image: url(none);
+		padding-right: 0;
+		padding-left: 0;
+	}
+	/*[[EDIT_FONTS]]*/
 }
-
 @-moz-document url-prefix("https://wiki.biligame.com/gt/"),
 url-prefix("https://searchwiki.biligame.com/gt/") {
-    /*特别修改~~坎公骑冠剑wiki*/
-    /*去除飞行小公主*/
-    .FLY,
-    .FLY.rX,
-    .FLY.rY,
-    .FLY.rZ {
-        display: none!important
-    }
-    /*白色透明顶栏*/
-    .wiki-header .wiki-nav {
-        border-top: 1px solid #000;
-        margin-left: auto;
-        border-radius: 15px;
-        margin-right: auto;
-        background: #ffffff69;
-        border: 0px solid #ffffff4a;
-    }
-    .wiki-header .wiki-nav-celling .celling-box {
-        border-bottom: 1px solid #0000;
-    }
-    .menu-wrap .wiki-menu-li-1 > a,
-    .vectorMenu h3 span {
-        color: rgba(0, 0, 0, .85);
-    }
-    /*面包屑模板显示页面时间*/
-    .bread-time {
-        display: initial!important;
-    }
+	/*特别修改~~坎公骑冠剑wiki*/
+	/*去除飞行小公主*/
+	.FLY,
+	.FLY.rX,
+	.FLY.rY,
+	.FLY.rZ {
+		display: none!important
+	}
+	/*白色透明顶栏*/
+	.wiki-header .wiki-nav {
+		border-top: 1px solid #000;
+		margin-left: auto;
+		border-radius: 15px;
+		margin-right: auto;
+		background: #ffffff69;
+		border: 0px solid #ffffff4a;
+	}
+	.wiki-header .wiki-nav-celling .celling-box {
+		border-bottom: 1px solid #0000;
+	}
+	.menu-wrap .wiki-menu-li-1 > a,
+	.vectorMenu h3 span {
+		color: rgba(0, 0, 0, .85);
+	}
+	/*面包屑模板显示页面时间*/
+	.bread-time {
+		display: initial!important;
+	}
 }
 @-moz-document url-prefix("https://wiki.biligame.com/arknights/"),
 url-prefix("https://searchwiki.biligame.com/arknights/") {
-    /*特别修改~~明日方舟wiki*/
-    /*明日方舟bwiki这破东西谁都救不了*/
-    /*顶部白底变透明*/
-    .wiki-header {
-        background: #fff0;
-    }
+	/*特别修改~~明日方舟wiki*/
+	/*明日方舟bwiki这破东西谁都救不了*/
+	/*顶部白底变透明*/
+	.wiki-header {
+		background: #fff0;
+	}
 }
-
 @-moz-document url-prefix("https://wiki.biligame.com"),
 url-prefix("https://searchwiki.biligame.com"),
 url-prefix("https://i0.hdslb.com/bfs/article") {
-    /*图片修改*/
-    img {
-        image-rendering: pixelated!important;
-    }
+	/*图片修改*/
+	img {
+		image-rendering: pixelated!important;
+	}
 }

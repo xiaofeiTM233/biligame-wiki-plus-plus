@@ -1,13 +1,13 @@
 /* ==UserStyle==
-@name         Bwiki++
-@namespace      bwiki-plus-plus
-@version        1.8+20230329
-@description    Bwiki++
-@author         飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
-@homepageURL    https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
-@supportURL     https://club.afox.tk
-@updateURL https://userstyles.world/api/style/6075.user.css
-@license        MIT
+@name			Bwiki++
+@namespace		bwiki-plus-plus
+@version		1.9+20230507
+@description		Bwiki++
+@author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
+@homepageURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
+@supportURL		https://club.afox.tk
+@updateURL		https://userstyles.world/api/style/6075.user.css
+@license		MIT
 
 @advanced dropdown EDIT_FONTS "编辑器字体" {
 	MONOSPACE "【默认】monospace" <<<EOT
@@ -23,6 +23,32 @@
 		.wikiEditor-ui .ace_editor {
 			font-family: consolas!important;
 			font-size: 14px!important;
+		}
+	EOT;
+}
+@advanced dropdown IPE "IPE“快速编辑”" {
+	TEXT "文字" <<<EOT
+	EOT;
+
+	ICON "图标" <<<EOT
+		.in-page-edit-article-link-group:before,
+		.in-page-edit-article-link-group:after{
+			content: ''!important;
+			font-weight: normal!important;
+		}
+		.in-page-edit-article-link {
+			font-size: 0!important;
+			font-weight: 400!important;
+			text-decoration: none!important;
+		}
+		.in-page-edit-article-link:hover:before{
+			color: #23527c;
+			text-decoration: underline!important;
+		}
+		.in-page-edit-article-link:before {
+			color: #36b;
+			content: '「↺」'!important;
+			font-size: 15px!important;
 		}
 	EOT;
 }
@@ -74,7 +100,8 @@ url-prefix("https://searchwiki.biligame.com") {
 		border: 1px solid #0077ff;
 	}
 	/*审核提示修改*/
-	.usermessage {
+	.usermessage,
+	.warningbox {
 		border-radius: 14px;
 		border: 1px solid #fc2;
 	}
@@ -110,9 +137,6 @@ url-prefix("https://searchwiki.biligame.com") {
 	}
 	/*看板娘*/
 	.animechara,
-	/*通知*/
-	#notice-modal-wrap.oo-ui-popupWidget,
-	#pt-notifications-alert a,
 	/*关于本站*/
 	.about-site,
 	/*全站通知*/
@@ -145,16 +169,24 @@ url-prefix("https://searchwiki.biligame.com") {
 	#preview-color {
 		display: none!important
 	}
-	.client-js .sortable:not(.jquery-tablesorter) > * > tr:first-child > th:not(.unsortable),
 	/*隐藏表格不可排序时的排序按钮*/
-	.jquery-tablesorter th.headerSort/*隐藏表格未排序时的排序按钮*/{
+	.client-js .sortable:not(.jquery-tablesorter) > * > tr:first-child > th:not(.unsortable),
+	/*隐藏表格未排序时的排序按钮*/
+	.jquery-tablesorter th.headerSort {
 		background-image: url(none);
 		padding-right: 0;
 		padding-left: 0;
 	}
-	.wikiEditor-ui/*编辑器位置矫正*/{
+	/*编辑器位置矫正*/
+	.wikiEditor-ui {
 		padding-top: 1.14514em;
 	}
+	/*IPE*/
+	.in-page-edit .ssi-topIcons .ssi-closeIcon {
+		padding: 0!important;
+	}
+	/*[[IPE]]*/
+	/*编辑器字体*/
 	/*[[EDIT_FONTS]]*/
 }
 @-moz-document url-prefix("https://wiki.biligame.com/gt/"),
@@ -176,6 +208,9 @@ url-prefix("https://searchwiki.biligame.com/gt/") {
 		background: #ffffff69;
 		border: 0px solid #ffffff4a;
 	}
+	.wiki-header .wiki-nav-celling {
+		background: rgba(245, 245, 245, 0.9);
+	}
 	.wiki-header .wiki-nav-celling .celling-box {
 		border-bottom: 1px solid #0000;
 	}
@@ -188,7 +223,7 @@ url-prefix("https://searchwiki.biligame.com/gt/") {
 	/*编辑摘要展示更多内容*/
 	.mw-summary-preset-item,
 	/*文章来源展示*/
-	.word-from{
+	.word-from {
 		display: initial!important;
 	}
 }

@@ -1,14 +1,24 @@
 /* ==UserStyle==
 @name			Bwiki++
 @namespace		bwiki-plus-plus
-@version		1.9+20230507
+@version		1.10+20240208
 @description		Bwiki++
 @author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
 @homepageURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
 @supportURL		https://club.afox.tk
-@updateURL		https://userstyles.world/api/style/6075.user.css
 @license		MIT
 
+auto
+@advanced dropdown IMG_SZ "图片缩放方式" {
+	AUTO "【默认】默认" <<<EOT
+	EOT;
+
+	PIXELATED "邻近（对像素友好）" <<<EOT
+		img {
+			image-rendering: pixelated!important;
+		}
+	EOT;
+}
 @advanced dropdown EDIT_FONTS "编辑器字体" {
 	MONOSPACE "【默认】monospace" <<<EOT
 		pre.CodeMirror-line,
@@ -77,7 +87,7 @@ url-prefix("https://searchwiki.biligame.com") {
 	}
 	.vectorMenu .menu,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2,
-	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3,
+	/*.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3,*/
 	.menu-wrap .wiki-menu-li-1.title_active,
 	.wiki-hoverbox .wiki-hoverbox-inner::-webkit-scrollbar-track {
 		background-color: #111219d9;
@@ -92,6 +102,10 @@ url-prefix("https://searchwiki.biligame.com") {
 	.menu-wrap .wiki-menu-li-1 {
 		border-radius: 0;
 		background: #fff0;
+	}
+	.wiki-hoverbox .wiki-hoverbox-inner {
+    overflow-y: hidden;
+    overflow-x: hidden;
 	}
 	/*显示页面分类*/
 	.catlinks {
@@ -236,11 +250,16 @@ url-prefix("https://searchwiki.biligame.com/arknights/") {
 		background: #fff0;
 	}
 }
+@-moz-document url-prefix("https://wiki.biligame.com/syyjsn/"),
+url-prefix("https://searchwiki.biligame.com/syyjsn/") {
+	/*特别修改~~明日方舟wiki*/
+	.mw-rcfilters-ui-changesListWrapperWidget {
+		display: block!important;
+	}
+}
 @-moz-document url-prefix("https://wiki.biligame.com"),
 url-prefix("https://searchwiki.biligame.com"),
 url-prefix("https://i0.hdslb.com/bfs/article") {
 	/*图片修改*/
-	img {
-		image-rendering: pixelated!important;
-	}
+	/*[[IMG_SZ]]*/
 }

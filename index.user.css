@@ -1,11 +1,11 @@
 /* ==UserStyle==
 @name			Bwiki++
 @namespace		bwiki-plus-plus
-@version		1.10+20240208
+@version		1.11+20240213
 @description		Bwiki++
-@author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://afox.tk)
+@author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://hitfun.top)
 @homepageURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
-@supportURL		https://club.afox.tk
+@supportURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus/issues
 @license		MIT
 
 auto
@@ -74,10 +74,16 @@ url-prefix("https://searchwiki.biligame.com") {
 		height: 36px;
 		line-height: 36px;
 	}
+	.menu-wrap .wiki-menu-li-1.title_active a,
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2,
+	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2 .wiki-menu-ul-3 .wiki-menu-li-3,
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
+		color: #fff!important;
+	}
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active a,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2:hover a,
 	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
-		color: #ffffff;
+		color: #fff;
 		text-decoration-line: none;
 	}
 	.vectorMenu li a:hover,
@@ -104,8 +110,12 @@ url-prefix("https://searchwiki.biligame.com") {
 		background: #fff0;
 	}
 	.wiki-hoverbox .wiki-hoverbox-inner {
-    overflow-y: hidden;
-    overflow-x: hidden;
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+	/*不知道为什么sbwiki后端写了两个hoverbox只修一个吧*/
+	body > .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
+		display: block;
 	}
 	/*显示页面分类*/
 	.catlinks {
@@ -148,6 +158,18 @@ url-prefix("https://searchwiki.biligame.com") {
 	}
 	#toc {
 		width: auto;
+	}
+	/*红链后置提示*/
+	.mw-parser-output a.new:after {
+		content: "\f127";
+		font: normal normal normal 14px/1 FontAwesome;
+		zoom: 0.6;
+		padding-left: 3px;
+		vertical-align: 6px;
+		color: #f00
+	}
+	.mw-parser-output a.new:hover:after {
+		vertical-align: 5px
 	}
 	/*看板娘*/
 	.animechara,

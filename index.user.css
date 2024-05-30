@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Bwiki++
 @namespace		bwiki-plus-plus
-@version		1.11+20240213
+@version		1.14+20240530
 @description		Bwiki++
 @author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://hitfun.top)
 @homepageURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
@@ -78,7 +78,7 @@ url-prefix("https://searchwiki.biligame.com") {
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2 .wiki-menu-ul-3 .wiki-menu-li-3,
 	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
-		color: #fff!important;
+		color: #fff;
 	}
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active a,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2:hover a,
@@ -88,15 +88,19 @@ url-prefix("https://searchwiki.biligame.com") {
 	}
 	.vectorMenu li a:hover,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2 .wiki-menu-li-2.li_active,
-	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover a {
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3:hover {
 		background-color: rgb(25, 95, 128);
 	}
 	.vectorMenu .menu,
 	.menu-wrap .wiki-menu-li-1 .wiki-menu-ul-2,
 	/*.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3,*/
 	.menu-wrap .wiki-menu-li-1.title_active,
+	.wiki-hoverbox .wiki-hoverbox-inner,
 	.wiki-hoverbox .wiki-hoverbox-inner::-webkit-scrollbar-track {
 		background-color: #111219d9;
+	}
+	.wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
+		background-color: transparent;
 	}
 	.vectorMenu li a,
 	.vectorMenu li a:hover,
@@ -112,13 +116,15 @@ url-prefix("https://searchwiki.biligame.com") {
 	.wiki-hoverbox .wiki-hoverbox-inner {
 		overflow-y: hidden;
 		overflow-x: hidden;
+		margin-left: 24px;
+		border-left: 0;
 	}
 	/*不知道为什么sbwiki后端写了两个hoverbox只修一个吧*/
 	body > .wiki-hoverbox .wiki-hoverbox-inner .wiki-menu-li-3 {
 		display: block;
 	}
 	/*显示页面分类*/
-	.catlinks {
+	body .catlinks {
 		border-radius: 14px;
 		display: block!important;
 		border: 1px solid #0077ff;
@@ -152,12 +158,37 @@ url-prefix("https://searchwiki.biligame.com") {
 	.comments-title {
 		font-size: 114.514%
 	}
+	/*不建议使用可视化编辑器*/
+	.oo-ui-messageDialog-actions-horizontal > span:nth-child(1) span.oo-ui-labelElement-label {
+		font-weight: normal;
+	}
+	.oo-ui-messageDialog-actions-horizontal > span:nth-child(1) span.oo-ui-labelElement-label:after {
+		content: "(不建议)";
+		color: red;
+		font-weight: bold;
+	}
 	/*最近更改页顶首增加高度*/
 	.page-特殊_最近更改 .mw-rcfilters-ui-changesListWrapperWidget {
 		margin-top: 2em;
 	}
 	#toc {
 		width: auto;
+	}
+	/*最近更改*/
+	.mw-changeslist table.mw-changeslist-line:hover {
+		background-color: #66f66866
+	}
+	a.mw-userlink {
+		color: #2a4b8d!important;
+	}
+	a.mw-userlink:active {
+		color: #faa700!important;
+	}
+	a.mw-userlink:visited {
+		color: #795cb2!important;
+	}
+	a.mw-userlink.new {
+		color: #a55858!important;
 	}
 	/*红链后置提示*/
 	.mw-parser-output a.new:after {
@@ -187,15 +218,17 @@ url-prefix("https://searchwiki.biligame.com") {
 	/*右下角工具栏*/
 	#menur,
 	/*b站顶底栏*/
+	body > div.visible-md-block.visible-lg-block:nth-child(1),
+	.bili-game-header-nav,
 	.bili-game-header-nav-bar,
 	.bui-sns-info.hidden-xs,
 	.footer-public,
-	/*隐藏目录按钮*/
-	#toc::after,
 	/*SmartClick*/
 	#alert-area,
 	/*移除可视化编辑按钮*/
 	#ca-ve-edit,
+	.mw-editsection .mw-editsection-visualeditor,
+	.mw-editsection .mw-editsection-divider,
 	/*右上角帮助*/
 	.mw-indicators,
 	/*最近更改筛选器及缩写列表*/
@@ -284,4 +317,381 @@ url-prefix("https://searchwiki.biligame.com"),
 url-prefix("https://i0.hdslb.com/bfs/article") {
 	/*图片修改*/
 	/*[[IMG_SZ]]*/
+	/*编辑器高亮*/
+	/*取自旧版本CodeMirror*/
+	.mediawiki .mw-editfont-monospace .CodeMirror,
+	.mediawiki .mw-editfont-sans-serif .CodeMirror,
+	.mediawiki .mw-editfont-serif .CodeMirror {
+		font-family: inherit
+	}
+	.mediawiki .wikiEditor-ui .CodeMirror {
+		line-height: 1.5em;
+		padding: 0.1em;
+		clear: both
+	}
+	.mediawiki .wikiEditor-ui .CodeMirror pre,
+	.mediawiki .wikiEditor-ui .CodeMirror .CodeMirror-lines {
+		padding: 0
+	}
+	.mediawiki .wikiEditor-ui-toolbar {
+		z-index: 7
+	}
+	.mediawiki .cm-mw-pagename {
+		text-decoration: underline
+	}
+	.mediawiki .cm-mw-matching {
+		background-color: #ffd700
+	}
+	.mediawiki .cm-mw-skipformatting {
+		background-color: #adf
+	}
+	.mediawiki .cm-mw-list {
+		color: #08f;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-doubleUnderscore,
+	.mediawiki .cm-mw-signature,
+	.mediawiki .cm-mw-hr {
+		color: #08f;
+		font-weight: bold;
+		background-color: #eee
+	}
+	.mediawiki .cm-mw-indenting {
+		color: #08f;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-mnemonic {
+		color: #290
+	}
+	.mediawiki .cm-mw-comment {
+		color: #84a0a0;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-apostrophes-bold,
+	.mediawiki .cm-mw-apostrophes-italic {
+		color: #08f
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-1,
+	pre.CodeMirror-line-like.cm-mw-section-1 {
+		font-size: 1.8em;
+		line-height: 1.2em
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-2,
+	pre.CodeMirror-line-like.cm-mw-section-2 {
+		font-size: 1.5em;
+		line-height: 1.2em
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-3,
+	pre.CodeMirror-line-like.cm-mw-section-3 {
+		font-weight: bold
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-4,
+	pre.CodeMirror-line-like.cm-mw-section-4 {
+		font-weight: bold
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-5,
+	pre.CodeMirror-line-like.cm-mw-section-5 {
+		font-weight: bold
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-section-6,
+	pre.CodeMirror-line-like.cm-mw-section-6 {
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-section-header {
+		color: #08f;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-template {
+		color: #80c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-template-name {
+		color: #80c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-template-name-mnemonic {
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-template-argument-name {
+		color: #80c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-template-delimiter {
+		color: #80c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-template-bracket {
+		color: #80c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-templatevariable {
+		color: #f50;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-templatevariable-name {
+		color: #f50;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-templatevariable-bracket {
+		color: #f50;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-templatevariable-delimiter {
+		color: #f50;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-parserfunction {
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-parserfunction-name {
+		color: #a11;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-parserfunction-bracket {
+		color: #a11;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-parserfunction-delimiter {
+		color: #a11;
+		font-weight: bold
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-exttag,
+	pre.CodeMirror-line-like.cm-mw-exttag {
+		background-color: rgba(119, 0, 170, 0.02)
+	}
+	.mediawiki .cm-mw-exttag {
+		background-color: rgba(119, 0, 170, 0.04)
+	}
+	.mediawiki .cm-mw-exttag-name {
+		color: #290;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-exttag-bracket {
+		color: #290;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-exttag-attribute {
+		color: #290;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-htmltag-name {
+		color: #290;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-htmltag-bracket {
+		color: #290;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-htmltag-attribute {
+		color: #290;
+		font-weight: normal
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-tag-pre,
+	pre.CodeMirror-line-like.cm-mw-tag-pre,
+	.mediawiki .cm-mw-tag-pre {
+		background-color: rgba(0, 0, 0, 0.04)
+	}
+	.mediawiki pre.CodeMirror-line.cm-mw-tag-nowiki,
+	pre.CodeMirror-line-like.cm-mw-tag-nowiki,
+	.mediawiki .cm-mw-tag-nowiki {
+		background-color: rgba(0, 0, 0, 0.04)
+	}
+	.mediawiki .cm-mw-link {
+		color: #36c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-link-pagename {
+		color: #36c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-link-tosection {
+		color: #18e;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-link-bracket {
+		color: #36c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-link-delimiter {
+		color: #36c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-extlink,
+	.mediawiki .cm-mw-free-extlink {
+		color: #36c;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-extlink-protocol,
+	.mediawiki .cm-mw-free-extlink-protocol {
+		color: #36c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-extlink-bracket {
+		color: #36c;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-table-bracket {
+		color: #e0e;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-table-delimiter {
+		color: #e0e;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-table-definition {
+		color: #e0e;
+		font-weight: normal
+	}
+	.mediawiki .cm-mw-table-caption {
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-template2-ground {
+		background-color: rgba(170, 17, 17, 0.04)
+	}
+	.mediawiki .cm-mw-template3-ground {
+		background-color: rgba(170, 17, 17, 0.08)
+	}
+	.mediawiki .cm-mw-template-ext-ground {
+		background-color: rgba(119, 0, 170, 0.04)
+	}
+	.mediawiki .cm-mw-template-ext2-ground {
+		background-color: rgba(119, 0, 170, 0.08)
+	}
+	.mediawiki .cm-mw-template-ext3-ground {
+		background-color: rgba(119, 0, 170, 0.12)
+	}
+	.mediawiki .cm-mw-template-link-ground {
+		background-color: rgba(34, 17, 153, 0.04)
+	}
+	.mediawiki .cm-mw-template-ext-link-ground {
+		background-color: rgba(77, 9, 162, 0.08)
+	}
+	.mediawiki .cm-mw-template-ext2-link-ground {
+		background-color: rgba(91, 6, 164, 0.12)
+	}
+	.mediawiki .cm-mw-template-ext3-link-ground {
+		background-color: rgba(98, 4, 166, 0.16)
+	}
+	.mediawiki .cm-mw-template2-ext-ground {
+		background-color: rgba(145, 9, 94, 0.08)
+	}
+	.mediawiki .cm-mw-template2-ext2-ground {
+		background-color: rgba(136, 6, 119, 0.12)
+	}
+	.mediawiki .cm-mw-template2-ext3-ground {
+		background-color: rgba(132, 4, 132, 0.16)
+	}
+	.mediawiki .cm-mw-template2-link-ground {
+		background-color: rgba(102, 17, 85, 0.08)
+	}
+	.mediawiki .cm-mw-template2-ext-link-ground {
+		background-color: rgba(108, 11, 113, 0.12)
+	}
+	.mediawiki .cm-mw-template2-ext2-link-ground {
+		background-color: rgba(111, 9, 128, 0.16)
+	}
+	.mediawiki .cm-mw-template2-ext3-link-ground {
+		background-color: rgba(112, 7, 136, 0.2)
+	}
+	.mediawiki .cm-mw-template3-ext-ground {
+		background-color: rgba(153, 11, 68, 0.12)
+	}
+	.mediawiki .cm-mw-template3-ext2-ground {
+		background-color: rgba(145, 9, 94, 0.16)
+	}
+	.mediawiki .cm-mw-template3-ext3-ground {
+		background-color: rgba(139, 7, 109, 0.2)
+	}
+	.mediawiki .cm-mw-template3-link-ground {
+		background-color: rgba(125, 17, 62, 0.12)
+	}
+	.mediawiki .cm-mw-template3-ext-link-ground {
+		background-color: rgba(123, 13, 89, 0.16)
+	}
+	.mediawiki .cm-mw-template3-ext2-link-ground {
+		background-color: rgba(122, 10, 105, 0.2)
+	}
+	.mediawiki .cm-mw-template3-ext3-link-ground {
+		background-color: rgba(122, 9, 116, 0.24)
+	}
+	.mediawiki .cm-mw-ext-ground {
+		background-color: rgba(119, 0, 170, 0.04)
+	}
+	.mediawiki .cm-mw-ext2-ground {
+		background-color: rgba(119, 0, 170, 0.08)
+	}
+	.mediawiki .cm-mw-ext3-ground {
+		background-color: rgba(119, 0, 170, 0.12)
+	}
+	.mediawiki .cm-mw-ext-link-ground {
+		background-color: rgba(34, 17, 153, 0.04)
+	}
+	.mediawiki .cm-mw-ext2-link-ground {
+		background-color: rgba(77, 9, 162, 0.08)
+	}
+	.mediawiki .cm-mw-ext3-link-ground {
+		background-color: rgba(91, 6, 164, 0.12)
+	}
+	.mediawiki .cm-mw-link-ground {
+		background-color: rgba(34, 17, 153, 0.04)
+	}
+	.mediawiki .cm-mw-matchingbracket {
+		background-color: #eee;
+		box-shadow: inset 0 0 1px 1px #999;
+		font-weight: bold
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-section-header,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-list,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-doubleUnderscore,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-signature,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-hr,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-indenting,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-apostrophes-bold,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-apostrophes-italic {
+		color: #0076dd
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-mnemonic {
+		color: #14866d
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-comment {
+		color: #72777d
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-link-pagename,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-link-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-link-delimiter,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-extlink,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-free-extlink,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-extlink-protocol,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-free-extlink-protocol,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-extlink-bracket {
+		color: #000aaa
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-link,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-link-tosection {
+		color: #0076dd
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-exttag-name,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-exttag-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-exttag-attribute,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-htmltag-name,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-htmltag-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-htmltag-attribute {
+		color: #14866d
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-table-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-table-delimiter,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-table-definition {
+		color: #d08
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-templatevariable,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-templatevariable-name,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-templatevariable-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-templatevariable-delimiter {
+		color: #ac6600
+	}
+	.mediawiki .cm-mw-accessible-colors .cm-mw-parserfunction-name,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-parserfunction-bracket,
+	.mediawiki .cm-mw-accessible-colors .cm-mw-parserfunction-delimiter {
+		color: #d33
+	}
 }

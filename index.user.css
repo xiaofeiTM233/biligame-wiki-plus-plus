@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Bwiki++
 @namespace		bwiki-plus-plus
-@version		1.14+20240530
+@version		1.15+20241130
 @description		Bwiki++
 @author			飞小RAN <xiaofeiTM233@vip.qq.com> (https://hitfun.top)
 @homepageURL		https://github.com/xiaofeiTM233/biligame-wiki-plus-plus
@@ -158,12 +158,9 @@ url-prefix("https://searchwiki.biligame.com") {
 	.comments-title {
 		font-size: 114.514%
 	}
-	/*不建议使用可视化编辑器*/
-	.oo-ui-messageDialog-actions-horizontal > span:nth-child(1) span.oo-ui-labelElement-label {
-		font-weight: normal;
-	}
-	.oo-ui-messageDialog-actions-horizontal > span:nth-child(1) span.oo-ui-labelElement-label:after {
-		content: "(不建议)";
+	/*专栏跳转链接提示*/
+	.opus-para-link-card:after {
+		content: "（暂未适配，无法点击）";
 		color: red;
 		font-weight: bold;
 	}
@@ -242,9 +239,9 @@ url-prefix("https://searchwiki.biligame.com") {
 	.client-js .sortable:not(.jquery-tablesorter) > * > tr:first-child > th:not(.unsortable),
 	/*隐藏表格未排序时的排序按钮*/
 	.jquery-tablesorter th.headerSort {
-		background-image: url(none);
-		padding-right: 0;
-		padding-left: 0;
+		background-image: none!important;
+		padding-right: 0!important;
+		padding-left: 0!important;
 	}
 	/*编辑器位置矫正*/
 	.wikiEditor-ui {
@@ -257,6 +254,15 @@ url-prefix("https://searchwiki.biligame.com") {
 	/*[[IPE]]*/
 	/*编辑器字体*/
 	/*[[EDIT_FONTS]]*/
+	
+	/*面包屑模板显示页面时间*/
+	.bread-time,
+	/*编辑摘要展示更多内容*/
+	.mw-summary-preset-item,
+	/*文章来源展示*/
+	.word-from {
+		display: initial!important;
+	}
 }
 @-moz-document url-prefix("https://wiki.biligame.com/gt/"),
 url-prefix("https://searchwiki.biligame.com/gt/") {
@@ -286,14 +292,6 @@ url-prefix("https://searchwiki.biligame.com/gt/") {
 	.menu-wrap .wiki-menu-li-1 > a,
 	.vectorMenu h3 span {
 		color: rgba(0, 0, 0, .85);
-	}
-	/*面包屑模板显示页面时间*/
-	.bread-time,
-	/*编辑摘要展示更多内容*/
-	.mw-summary-preset-item,
-	/*文章来源展示*/
-	.word-from {
-		display: initial!important;
 	}
 }
 @-moz-document url-prefix("https://wiki.biligame.com/arknights/"),
